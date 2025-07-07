@@ -60,3 +60,15 @@ Ministore is a personal project I built from scratch to learn and apply full-sta
 - Works on desktop, tablet, and mobile screens
 
 ---
+
+### Run this app locally
+
+```shell
+npm run build
+```
+
+### Start the app
+
+```shell
+npm run start
+```
