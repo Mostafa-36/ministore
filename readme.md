@@ -61,6 +61,13 @@ Ministore is a personal project I built from scratch to learn and apply full-sta
 
 ---
 
+### Setup .env file
+
+```shell
+MONGO_URI=your_mongo_uri
+PORT=5000
+```
+
 ### Run this app locally
 
 ```shell
