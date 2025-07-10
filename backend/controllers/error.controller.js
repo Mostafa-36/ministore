@@ -4,7 +4,7 @@ import sendErrorProd from "../errors/sendErrorProd.js";
 
 export default (err, req, res, next) => {
   // let error = { ...err };
-  err.status = err?.status || "erroror";
+  err.status = err?.status || "error";
   err.statusCode = err?.statusCode || 500;
 
   if (process.env.NODE_ENV === "production") {
