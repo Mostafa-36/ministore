@@ -3,18 +3,24 @@ import sendErrorDev from "../errors/sendErrorDev.js";
 import sendErrorProd from "../errors/sendErrorProd.js";
 
 export default (err, req, res, next) => {
-  // let error = { ...err };
-  err.status = err?.status || "error";
-  err.statusCode = err?.statusCode || 500;
+  err.status = err.status || "error";
+  err.statusCode = err.statusCode || 500;
 
   if (process.env.NODE_ENV === "production") {
+     let error = {
+      ...err,
+      message: err.message,
+      name: err.name,
+      stack: err.stack,
+    };
+    
     for (let handler of errorHandlersList) {
-      if (handler.match(err)) {
-        err = handler.helper(err);
+      if (handler.match(error)) {
+        error = handler.helper(error);
       }
     }
 
-    sendErrorProd(err, res);
+    sendErrorProd(error, res);
   } else {
     sendErrorDev(err, res);
   }
